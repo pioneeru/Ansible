@@ -1,0 +1,11 @@
+---
+- hosts: o-inst
+  gather_facts: false
+  tasks:
+  - name: Return hosts to registered var
+    command: "cat /etc/hosts"
+    register: myhosts
+
+  - name: Display output
+    ansible.builtin.debug:
+      var: myhosts.stdout_lines
